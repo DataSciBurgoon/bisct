@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/96773398.svg)](https://zenodo.org/badge/latestdoi/96773398)
+
 # BISCT
 
 Bayesian Inference for Substance and Chemical Toxicity
