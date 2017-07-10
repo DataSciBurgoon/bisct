@@ -32,6 +32,10 @@ AOPXplorer makes it easy to visualize what's going on -- to see the probabilitie
 
 BISCT consists of two parts -- the software + graphical user interface (GUI) and the Content Pack. The Content Pack contains the Bayesian Network models. Over time, the Content Packs will be updated to include new Bayesian Network models, or to make updates to existing ones. We will always show the version number for the Content Pack on the user interface. Content Packs do not automatically update at this time -- so you'll need to download a new version.
 
+## Input Files
+
+Make sure you download the sample input files in this directory. They contain all of the node names that you can specify in the models. You can edit these in Excel. Make sure you remove all lines for nodes that you do not have evidence for. You can see an example of a file that we've run for prochloraz in the src directory (steroidogenesis_prochloraz_example.txt).
+
 ## Let Us Notify You About updates
 
 If you want to know about updates, you can email the developer at lyle.d.burgoon@usace.army.mil to be added to the update list.
