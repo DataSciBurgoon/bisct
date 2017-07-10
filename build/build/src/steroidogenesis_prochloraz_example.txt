@@ -1,0 +1,8 @@
+progesterone	true
+deoxycorticosterone	true
+estrone	false
+estradiol	false
+androstenedione	false
+testosterone	false
+cortisol	false
+deoxycortisol	false

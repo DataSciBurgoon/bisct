@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="BISCT.jnlp">
+  <information>
+    <title>BISCT</title>
+    <vendor>US Army Engineer Research and Development Center</vendor>
+    <description>BISCT</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="BISCT.jar" size="110574" download="eager" />
+    <jar href="libs/junit.jar" size="314932" download="eager" />
+    <jar href="libs/org.hamcrest.core_1.3.0.v201303031735.jar" size="55198" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="0" height="0" main-class="application.Main"  name="BISCT" />
+  <update check="background"/>
+</jnlp>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventHandlerController">
+   <children>
+      <SplitPane dividerPositions="0.33964365256124723" layoutY="57.0" prefHeight="522.0" prefWidth="900.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="fileOpenButton" layoutX="26.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleFileOpenButtonAction" text="Data File" />
+                  <Label fx:id="fileNameLabel" layoutX="112.0" layoutY="84.0" prefHeight="17.0" prefWidth="165.0" text="filename" />
+                  <ComboBox fx:id="comboBox" layoutX="26.0" layoutY="139.0" prefHeight="27.0" prefWidth="217.0" promptText="AOP Bayes Net">
+                  	<items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  			<String fx:value="Steatosis" />
+                  			<String fx:value="Steroidogenesis" />
+                  		</FXCollections>
+                  	</items>
+                  </ComboBox>
+                  <Label layoutX="14.0" layoutY="14.0" text="Get your predictions in 3 easy steps!" />
+                  <Label layoutX="14.0" layoutY="57.0" text="1) Choose your input data file" />
+                  <Label layoutX="12.0" layoutY="122.0" text="2) Choose the bayes net" />
+                  <Label layoutX="14.0" layoutY="185.0" text="3)  Press Go!" />
+                  <Button fx:id="submitButton" layoutX="25.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Go!" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="681.0">
+               <children>
+                  <TableView fx:id="predictionTable" layoutX="7.0" prefHeight="510.0" prefWidth="575.0">
+                    <columns>
+                      <TableColumn fx:id="columnNodeName" prefWidth="150.0" text="Node Name" />
+                      <TableColumn fx:id="columnProbActive" prefWidth="175.0" text="Probability Node Active" />
+                      <TableColumn fx:id="columnProbInactive" prefWidth="175.0" text="Probability Node Inactive" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+      <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BISCT: Bayesian Inference for Substance and Chemical Toxicity">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="67.0" fitWidth="132.0" layoutX="54.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../USACE_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="101.0" fitWidth="80.0" layoutX="190.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logos_whitebg.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="332.0" layoutY="589.0" text="Software Version 1.0.0" />
+      <Label layoutX="332.0" layoutY="626.0" text="Developed by: Lyle D. Burgoon, Ph.D." />
+      <Label layoutX="337.0" layoutY="662.0" />
+      <Label layoutX="332.0" layoutY="643.0" text="US Army Corps of Engineers, Engineer Research and Development Center" />
+      <Label layoutX="333.0" layoutY="697.0" text="Funded by the US Army Environmental Quality and Installations Program" />
+      <Label layoutX="332.0" layoutY="604.0" text="Content Pack 1.0.0" />
+      <Label layoutX="332.0" layoutY="677.0" text="Bioinformatics and Computational Toxicology Group" />
+      <Label layoutX="332.0" layoutY="660.0" text="Environmental Laboratory" />
+   </children>
+</AnchorPane>
