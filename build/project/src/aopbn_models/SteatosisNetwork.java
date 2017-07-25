@@ -37,6 +37,10 @@ public class SteatosisNetwork implements AopbnNetwork{
 		pi3k.addOutcomes("true", "false");
 		pi3k.setProbabilities(0.5, 0.5);
 		
+		BayesNode efflux = net.createNode("efflux");
+		efflux.addOutcomes("true", "false");
+		efflux.setProbabilities(0.5, 0.5);
+		
 		BayesNode fxr = net.createNode("fxr");
 		fxr.addOutcomes("true", "false");
 		fxr.setParents(Arrays.asList(nrf2));
@@ -134,6 +138,14 @@ public class SteatosisNetwork implements AopbnNetwork{
 				0.05, 0.95 //pi3k==false
 				);
 		
+		BayesNode influx = net.createNode("influx");
+		influx.addOutcomes("true", "false");
+		influx.setParents(Arrays.asList(lfabp));
+		influx.setProbabilities(
+				0.99, 0.01, //lfabp==true
+				0.01, 0.99 //lfabp==false
+				);
+		
 		BayesNode pparg = net.createNode("pparg");
 		pparg.addOutcomes("true", "false");
 		pparg.setParents(Arrays.asList(lfabp));
@@ -208,28 +220,41 @@ public class SteatosisNetwork implements AopbnNetwork{
                 0.05, 0.95 //fas==false
                 );
 		
-		BayesNode cfa = net.createNode("cytosolic_fatty_acids");
-		cfa.addOutcomes("true", "false");
-		cfa.setParents(Arrays.asList(lipogenesis, lfabp));
-		cfa.setProbabilities(
-				//lipogenesis==true
-				0.99, 0.01, //lfabp==true
-				0.99, 0.01, //lfabp==false 
-				//lipogenesis==false
-				0.99, 0.01, //lfabp==true
-				0.01, 0.99  //lfabp==false
-				);
-		
 		BayesNode steatosis = net.createNode("steatosis");
 		steatosis.addOutcomes("true", "false");
-		steatosis.setParents(Arrays.asList(cfa, fabo));
+		steatosis.setParents(Arrays.asList(fabo, lipogenesis, influx, efflux));
 		steatosis.setProbabilities(
-				//cfa==true
-				0.01, 0.99, //fabo==true
-				0.99, 0.01, //fabo==false 
-				//cfa==false
-				0.01, 0.99, //fabo==true
-				0.50, 0.50 //fabo==false
+				//fabo==true, lipog==true, influx==true
+				0.50, 0.50, //efflux==true
+				0.99, 0.01, //efflux==false
+				
+				//fabo==true, lipog==true, influx==false
+				0.50, 0.50, //efflux==true
+				0.50, 0.50, //efflux==false
+				
+				//fabo==true, lipog==false, influx==true
+				0.50, 0.50, //efflux==true
+				0.80, 0.20, //efflux==false
+				
+				//fabo==true, lipog==false, influx==false
+				0.01, 0.99, //efflux==true
+				0.20, 0.80, //efflux==false
+				
+				//fabo==false, lipog==true, influx==true
+				0.50, 0.50, //efflux==true
+				0.99, 0.01, //efflux==false
+				
+				//fabo==false, lipog==true, influx==false
+				0.50, 0.50, //efflux==true
+				0.99, 0.01, //efflux==false
+				
+				//fabo==false, lipog==false, influx==true
+				0.50, 0.50, //efflux==true
+				0.99, 0.01, //efflux==false
+				
+				//fabo==false, lipog==false, influx==false
+				0.01, 0.99, //efflux==true
+				0.50, 0.50 //efflux==false
 				);
 		
 		@SuppressWarnings("deprecation")

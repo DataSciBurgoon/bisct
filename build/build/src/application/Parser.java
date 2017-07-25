@@ -25,7 +25,7 @@ public class Parser {
 		try(BufferedReader reader = Files.newBufferedReader(filepath, StandardCharsets.UTF_8)){
 			while((line = reader.readLine()) != null){
 				String[] entries = line.split("\t");
-				hmEvidence.put(entries[0], entries[1]);
+				hmEvidence.put(entries[0], entries[1].toLowerCase());
 			}
 		}
 		catch(IOException e){

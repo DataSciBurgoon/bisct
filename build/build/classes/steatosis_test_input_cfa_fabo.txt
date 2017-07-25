@@ -1,2 +1,1 @@
-cytosolic_fatty_acids	true
 fatty_acid_beta_oxidation	false
