@@ -1,0 +1,6 @@
+fatty_acid_beta_oxidation	TRUE
+pparg	TRUE
+srebp1	TRUE
+influx	TRUE
+efflux	FALSE
+lipogenesis	TRUE
