@@ -128,14 +128,10 @@ public class SteatosisNetwork implements AopbnNetwork{
 
 		BayesNode lfabp = net.createNode("lfabp");
 		lfabp.addOutcomes("true", "false");
-		lfabp.setParents(Arrays.asList(akt, pi3k));
+		lfabp.setParents(Arrays.asList(akt));
 		lfabp.setProbabilities(
-				//akt==true
-				0.95, 0.05, //pi3k==true
-				0.50, 0.50, //pi3k==false 
-				//akt==false
-				0.50, 0.50, //pi3k==true
-				0.05, 0.95 //pi3k==false
+				0.95, 0.05, //akt==true
+				0.05, 0.95 //akt==false
 				);
 		
 		BayesNode influx = net.createNode("influx");
@@ -193,11 +189,11 @@ public class SteatosisNetwork implements AopbnNetwork{
 		srebp1.setParents(Arrays.asList(mtorc1, apkc));
 		srebp1.setProbabilities(
 				//mtorc1==true
-				0.95, 0.05, //apkc==true
-				0.05, 0.95, //apkc==false
+				0.99, 0.01, //apkc==true
+				0.99, 0.01, //apkc==false
 				//mtorc2==false
-                0.95, 0.05,  //apkc==true 
-                0.05, 0.95  //apkc==false
+                0.99, 0.01,  //apkc==true 
+                0.01, 0.99  //apkc==false
                 );
 		
 		BayesNode scd1 = net.createNode("scd1");

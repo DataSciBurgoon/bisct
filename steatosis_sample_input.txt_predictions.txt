@@ -1,0 +1,24 @@
+Node Name	Node Active Probability	Node Inactive Probability
+nrf2	1.0	0.0
+ir	0.0	1.0
+pi3k	1.0	0.0
+efflux	1.0	0.0
+fxr	1.0	0.0
+shp	0.0	1.0
+lxr	1.0	0.0
+ppara	0.0	1.0
+hsd17b4	1.0	0.0
+fatty_acid_beta_oxidation	1.0	0.0
+lrh1	0.0	1.0
+mtorc2	1.0	0.0
+akt	0.0	1.0
+lfabp	1.0	0.0
+influx	0.0	1.0
+pparg	1.0	0.0
+fas	0.0	1.0
+mtorc1	1.0	0.0
+apkc	0.0	1.0
+srebp1	1.0	0.0
+scd1	1.0	0.0
+lipogenesis	0.0	1.0
+steatosis	0.0	1.0

@@ -74,8 +74,7 @@ public class EventHandlerController implements Initializable, ControlledScreen{
 		
 		try{
 			
-			String baseFileName = file.getName().split("\\.")[0];
-			FileWriter fw = new FileWriter(file.getPath() + baseFileName + "_predictions.txt");
+			FileWriter fw = new FileWriter(file.getPath() + "_predictions.txt");
 			fw.write("Node Name\tNode Active Probability\tNode Inactive Probability\n");
 			for(AopbnResult aopbnresult: olAopbnResults){
 				String output = aopbnresult.nodeNameProperty().getValue() + "\t";
