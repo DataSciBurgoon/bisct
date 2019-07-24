@@ -37,10 +37,6 @@ public class SteatosisNetwork implements AopbnNetwork{
 		pi3k.addOutcomes("true", "false");
 		pi3k.setProbabilities(0.5, 0.5);
 		
-		BayesNode efflux = net.createNode("efflux");
-		efflux.addOutcomes("true", "false");
-		efflux.setProbabilities(0.5, 0.5);
-		
 		BayesNode fxr = net.createNode("fxr");
 		fxr.addOutcomes("true", "false");
 		fxr.setParents(Arrays.asList(nrf2));
@@ -113,6 +109,31 @@ public class SteatosisNetwork implements AopbnNetwork{
 				0.99, 0.01, //ir==true
 				0.01, 0.99 //ir==false
 				);
+		
+		BayesNode foxo1 = net.createNode("foxo1");
+		foxo1.addOutcomes("true", "false");
+		foxo1.setParents(Arrays.asList(ir));
+		foxo1.setProbabilities(
+				0.01, 0.99, //ir == true
+				0.99, 0.01 //ir == false
+				);
+		
+		BayesNode mtp = net.createNode("mtp");
+		mtp.addOutcomes("true", "false");
+		mtp.setParents(Arrays.asList(foxo1));
+		mtp.setProbabilities(
+				0.99, 0.01, //foxo1 == true
+				0.01, 0.99  //foxo1 == false
+				);
+		
+		BayesNode efflux = net.createNode("efflux");
+		efflux.addOutcomes("true", "false");
+		efflux.setParents(Arrays.asList(mtp));
+		efflux.setProbabilities(
+				0.99, 0.01, //mtp == true
+				0.01, 0.99  //mtp == false
+				);
+		
 		
 		BayesNode akt = net.createNode("akt");
 		akt.addOutcomes("true", "false");
@@ -200,8 +221,8 @@ public class SteatosisNetwork implements AopbnNetwork{
 		scd1.addOutcomes("true", "false");
 		scd1.setParents(Arrays.asList(srebp1));
 		scd1.setProbabilities(
-				1.0, 0.0, //srebp1==true 
-				0.0, 1.0 //srebp1==false
+				0.99, 0.01, //srebp1==true 
+				0.01, 0.99 //srebp1==false
 				);
 		
 		BayesNode lipogenesis = net.createNode("lipogenesis");
