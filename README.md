@@ -1,4 +1,5 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1067319.svg)](https://doi.org/10.5281/zenodo.1067319)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3349914.svg)](https://doi.org/10.5281/zenodo.3349914)
+
 
 
 # BISCT
