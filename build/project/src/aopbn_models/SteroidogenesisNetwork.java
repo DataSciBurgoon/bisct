@@ -95,6 +95,18 @@ public class SteroidogenesisNetwork {
 				0.01, 0.99 //hydroxypregnenolone==false
 				);
 		
+		BayesNode androstenediol = net.createNode("androstenediol");
+		androstenediol.addOutcomes("true", "false");
+		androstenediol.setParents(Arrays.asList(hsd17b3, dhea));
+		androstenediol.setProbabilities(
+				//hsd17b3==true
+				0.99, 0.01, //dhea==true
+				0.01, 0.99, //dhea==false
+				//hsd17b3==false
+				0.01, 0.99, //dhea==true
+				0.01, 0.99 //dhea==false
+				);
+		
 		BayesNode progesterone = net.createNode("progesterone");
 		progesterone.addOutcomes("true", "false");
 		progesterone.setParents(Arrays.asList(hsd3b1, pregnenolone));
@@ -107,16 +119,40 @@ public class SteroidogenesisNetwork {
 				0.01, 0.99 //pregnenolone==false
 				);
 		
-		BayesNode hydroxyprogesterone = net.createNode("hydroxyprogesterone");
-		hydroxyprogesterone.addOutcomes("true", "false");
-		hydroxyprogesterone.setParents(Arrays.asList(cyp17a1_hydroxylase, progesterone));
-		hydroxyprogesterone.setProbabilities(
+		BayesNode hydroxyprogesterone1 = net.createNode("hydroxyprogesterone1");
+		hydroxyprogesterone1.addOutcomes("true", "false");
+		hydroxyprogesterone1.setParents(Arrays.asList(cyp17a1_hydroxylase, progesterone));
+		hydroxyprogesterone1.setProbabilities(
 				//cyp17a1_hydroxylase==true
 				0.99, 0.01, //progesterone==true
 				0.01, 0.99, //progesterone==false
 				//cyp17a1_hydroxylase==false
 				0.01, 0.99, //progesterone==true
 				0.01, 0.99 //progesterone==false
+				);
+		
+		BayesNode hydroxyprogesterone2 = net.createNode("hydroxyprogesterone2");
+		hydroxyprogesterone2.addOutcomes("true", "false");
+		hydroxyprogesterone2.setParents(Arrays.asList(hsd3b1, hydroxypregnenolone));
+		hydroxyprogesterone2.setProbabilities(
+				//hsd3b1==true
+				0.99, 0.01, //hydroxypregnenolone==true
+				0.01, 0.99, //hydroxypregnenolone==false
+				//hsd3b1==false
+				0.01, 0.99, //hydroxypregnenolone==true
+				0.01, 0.99 //hydroxypregnenolone==false
+				);
+		
+		BayesNode hydroxyprogesterone = net.createNode("hydroxyprogesterone");
+		hydroxyprogesterone.addOutcomes("true", "false");
+		hydroxyprogesterone.setParents(Arrays.asList(hydroxyprogesterone1, hydroxyprogesterone2));
+		hydroxyprogesterone.setProbabilities(
+				//hydroxyprogesterone1==true
+				0.99, 0.01, //hydroxyprogesterone2==true
+				0.99, 0.01, //hydroxyprogesterone2==false
+				//hydroxyprogesterone1==false
+				0.99, 0.01, //hydroxyprogesterone2==true
+				0.01, 0.99 //hydroxyprogesterone2==false
 				);
 		
 		BayesNode androstenedione1 = net.createNode("androstenedione1");
@@ -149,9 +185,9 @@ public class SteroidogenesisNetwork {
 		androstenedione.setProbabilities(
 				//androstenedione1==true
 				0.99, 0.01, //androstenedione2==true
-				0.01, 0.99, //androstenedione2==false
+				0.99, 0.01, //androstenedione2==false
 				//androstenedione1==false
-				0.01, 0.99, //androstenedione2==true
+				0.99, 0.01, //androstenedione2==true
 				0.01, 0.99 //androstenedione2==false
 				);
 		
@@ -167,16 +203,40 @@ public class SteroidogenesisNetwork {
 				0.01, 0.99 //androstenedione==false
 				);
 		
-		BayesNode testosterone = net.createNode("testosterone");
-		testosterone.addOutcomes("true", "false");
-		testosterone.setParents(Arrays.asList(hsd17b3, androstenedione));
-		testosterone.setProbabilities(
+		BayesNode testosterone1 = net.createNode("testosterone1");
+		testosterone1.addOutcomes("true", "false");
+		testosterone1.setParents(Arrays.asList(hsd17b3, androstenedione));
+		testosterone1.setProbabilities(
 				//hsd17b3==true
 				0.99, 0.01, //androstenedione==true
 				0.01, 0.99, //androstenedione==false
 				//hsd17b3==false
 				0.01, 0.99, //androstenedione==true
 				0.01, 0.99 //androstenedione==false
+				);
+		
+		BayesNode testosterone2 = net.createNode("testosterone2");
+		testosterone2.addOutcomes("true", "false");
+		testosterone2.setParents(Arrays.asList(hsd3b1, androstenediol));
+		testosterone2.setProbabilities(
+				//hsd17b3==true
+				0.99, 0.01, //androstenediol==true
+				0.01, 0.99, //androstenediol==false
+				//hsd17b3==false
+				0.01, 0.99, //androstenediol==true
+				0.01, 0.99 //androstenediol==false
+				);
+		
+		BayesNode testosterone = net.createNode("testosterone");
+		testosterone.addOutcomes("true", "false");
+		testosterone.setParents(Arrays.asList(testosterone1, testosterone2));
+		testosterone.setProbabilities(
+				//testosterone1==true
+				0.99, 0.01, //testosterone2==true
+				0.99, 0.01, //testosterone2==false
+				//testosterone1==false
+				0.99, 0.01, //testosterone2==true
+				0.01, 0.99 //testosterone2==false
 				);
 		
 		BayesNode estradiol = net.createNode("estradiol");
@@ -208,11 +268,11 @@ public class SteroidogenesisNetwork {
 		corticosterone.setParents(Arrays.asList(cyp11b1, deoxycorticosterone));
 		corticosterone.setProbabilities(
 				//cyp11b1==true
-				0.99, 0.01, //deoxycortisone==true
-				0.01, 0.99, //deoxycortisone==false
+				0.99, 0.01, //deoxycorticosterone==true
+				0.01, 0.99, //deoxycorticosterone==false
 				//cyp11b1==false
-				0.01, 0.99, //deoxycortisone==true
-				0.01, 0.99 //deoxycortisone==false
+				0.01, 0.99, //deoxycorticosterone==true
+				0.01, 0.99 //deoxycorticosterone==false
 				);
 		
 		BayesNode deoxycortisol = net.createNode("deoxycortisol");
